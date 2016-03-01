@@ -1,7 +1,6 @@
 FROM ubuntu:14.04
 MAINTAINER Li Da <lidaemail@qq.com>
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/' /etc/apt/sources.list
-RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         openssh-server \
@@ -57,4 +56,5 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && tar -xJf "node-v$NODE_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc
 
+RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 CMD [ "node" ]
